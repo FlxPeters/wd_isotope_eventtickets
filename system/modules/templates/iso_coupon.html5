@@ -1,0 +1,52 @@
+<div style="font-size: 75%; font-family: Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="75%">
+                <h3>Veranstalter des Events</h3>
+                <p><?php 
+                echo $this->shopdata->company.'<br>';
+                echo $this->shopdata->street_1.'<br>';
+                echo $this->shopdata->postal.' '. $this->shopdata->city .'<br>';
+                 ?>
+                <br><br></p>
+                <h3>Käufer</h3>
+            <address><?php echo $this->registration->firstname; ?> <?php echo $this->registration->lastname; ?><br><?php echo $this->registration->company; ?><br><?php echo $this->registration->street; ?><br><?php echo $this->registration->plz_city; ?><br>
+            </address>
+            </td>
+            <td><!-- <img src="<?php echo $this->image; ?>" alt=""> --></td>
+        </tr>
+        <tr >
+            <td colspan="2" width="90%">
+                <h2>Ihr Ticket für die Veranstaltung "<?php echo $this->eventTitle; ?>"</h2>
+
+                <p>Sehr geehrte(r) <?php echo $this->registration->firstname; ?> <?php echo $this->registration->lastname; ?>,</p>
+
+                <p>anbei erhalten Sie Ihr Ticket für "<?php echo $this->ticketTitleSubDate; ?>" am <?php echo $this->eventDate; ?> von <?php echo $this->eventTime; ?> - <?php echo $this->eventEndTime; ?>, welches Sie bei uns bestellt haben.</p>
+
+                <p>Wir freuen uns über Ihre Bestellung und wünschen Ihnen eine schöne Veranstaltung. Es
+                    genügt, wenn Sie dieses Ticket ausdrucken und zur Veranstaltung mitbringen.</p>
+
+                <p>Mit freundlichen Grüßen<br><br>Ihr Veranstaltungsteam! </p>
+            </td>
+        </tr>
+    </table>
+    <br><br><br><br><br> <br> 
+    
+    <table cellspacing="0" cellpadding="10" border="1" width="100%">
+        <tr>
+            <td width="100%" bgcolor="#000000"><h2 style="color:#fff">Ticket</h2></td>
+        </tr>
+        <tr>
+            <td>
+            <p><b>Veranstalter:</b><?php echo $this->shopdata->company; ?></p>
+            <h1><?php echo $this->ticketTitleSubDate; ?></h1>
+            <p>am <?php echo $this->eventDate; ?> von <?php echo $this->eventTime; ?> - <?php echo $this->eventEndTime; ?></p>
+            <p><br>Bestellnummer: <?php echo $this->orderId; ?><?php //<br>Preis: EUR  < ?php echo $this->product->price; ? >.- ?></p>
+            <p>Ticketnummer: <?php echo $this->registration->regNr; ?><br>Ticket <?php echo $this->ticketTotalCount; ?> von <?php echo $this->ticketCount; ?></p>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>Besteller: <?php echo $this->order->billingAddress['firstname']; ?> <?php echo $this->order->billingAddress['lastname']; ?><br>
+</div>
+

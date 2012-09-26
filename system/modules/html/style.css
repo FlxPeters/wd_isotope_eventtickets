@@ -1,0 +1,25 @@
+.p4 {
+    padding-top: 4px;
+    padding-left: 20px;
+}
+
+.free {
+    border-left: 13px solid green;
+    padding-left: 7px;
+}
+
+.fewFree {
+    border-left: 13px solid orange;
+    padding-left: 7px;
+}
+
+.full {
+    border-left: 13px solid red;
+    padding-left: 7px;
+}
+
+.over {
+    border-left: 13px solid #d3d3d3;
+    padding-left: 7px;
+}
+

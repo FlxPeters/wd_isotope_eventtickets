@@ -1,0 +1,80 @@
+<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+
+/**
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+ *
+ * PHP version 5
+ * @copyright  Felix peters - 2011
+ * @author     Felix peters - Wichteldesign
+ * @package    wd
+ * @license    -
+ * @filesource
+ */
+
+
+
+ /*
+  * Felder
+  */
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['evr_register_mail'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['evr_register_mail'],
+	'exclude'                 => true,
+	'inputType'               => 'textarea',
+	'eval'                    => array('style'=>'height:120px;', 'decodeEntities'=>true, 'alwaysSave'=>true),
+	'load_callback' => array
+	(
+		array('tl_module_eventRegistration', 'getRegistrationTextDefault')
+	)
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['evr_register_mail_cc'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['evr_register_mail_cc'],
+	'exclude'                 => true,
+	'inputType'               => 'text',
+	'eval'                    => array('rgxp' => 'email'),
+
+);
+
+$GLOBALS['TL_DCA']['tl_module']['palettes']['eventlist']   .= ';{legend_evt_register},jumpTo';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['evenregistration']  = '{title_legend},name,headline,type;{template_legend:hide};{expert_legend:hide},guests,cssID,space;{legend_evt_register},jumpTo,evr_register_mail_cc,evr_register_mail';
+
+
+
+class tl_module_eventRegistration extends Backend
+{
+	/**
+	 * Load the default  text
+	 * @param string
+	 * @return string
+	 */
+	public function getRegistrationTextDefault($varValue)
+	{
+		if (!trim($varValue))
+		{
+			$varValue = $GLOBALS['TL_LANG']['tl_module']['evr_register_mail_text'][1];
+		}
+
+		return $varValue;
+	}
+
+}
